@@ -4,7 +4,8 @@
 let users = [
     { username: 'admin', password: '123', registration: 'A001', role: 'admin' },
     { username: 'user', password: '456', registration: 'U001', role: 'user' },
-    { username: 'Rafa', password: '2405', registration: 'U002', role: 'user' }
+    { username: 'Rafa', password: '2405', registration: 'U002', role: 'user' },
+    {username : 'sebold',password : '123', registration: 'A002', role: 'admin'}
 ];
 
 // Equipamentos (RF002)
