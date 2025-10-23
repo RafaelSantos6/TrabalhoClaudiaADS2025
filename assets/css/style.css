@@ -1,0 +1,170 @@
+/* Paleta de Cores Tema (RNF003) [cite: 9] */
+:root {
+    --color-primary-light: #8FD4FF; /* R-G-B: 143, 212, 255 [cite: 10] */
+    --color-primary-medium: #40B7FF; /* R-G-B: 64, 183, 255 [cite: 11, 13] */
+    --color-primary-extra-light: #E0F3FF; /* R-G-B: 234, 245, 255 [cite: 12, 14] */
+
+    /* Paleta de Cores Botões Confirma/Excluir (RNF004) [cite: 15] */
+    --color-confirm: #45FA78; /* Verde para Confirmação [cite: 18] */
+    --color-cancel-delete: #FA4545; /* Vermelho para Exclusão/Encerramento [cite: 16] */
+
+    --color-text-dark: #333;
+    --color-text-light: white;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-primary-extra-light);
+    color: var(--color-text-dark);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+header {
+    width: 100%;
+    background-color: var(--color-primary-medium);
+    color: var(--color-text-light);
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Header right: avatar */
+.header-right {
+    position: absolute;
+    top: 18px;
+    right: 20px;
+}
+
+#profile-avatar {
+    width: 44px;
+    height: 44px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid var(--color-text-light);
+    cursor: pointer;
+}
+
+@media (max-width: 600px) {
+    .header-right { right: 12px; top: 14px; }
+    #profile-avatar { width: 36px; height: 36px; }
+}
+
+#app-container {
+    width: 90%;
+    max-width: 800px;
+    margin: 20px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsividade (RNF002)  */
+@media (max-width: 600px) {
+    #app-container {
+        width: 100%;
+        margin: 10px 0;
+        padding: 10px;
+    }
+}
+
+.screen {
+    display: none;
+    padding: 10px;
+}
+
+.screen.active {
+    display: block;
+}
+
+/* Estilo para Formulários e Inputs */
+form label, form input, form select {
+    display: block;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+form input, form select {
+    padding: 10px;
+    border: 1px solid var(--color-primary-light);
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Estilo para Botões (RNF004)  */
+button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 5px;
+    transition: background-color 0.3s ease;
+    color: var(--color-text-dark);
+}
+
+.btn-confirm {
+    background-color: var(--color-confirm); /* Confirmação [cite: 18] */
+}
+
+.btn-confirm:hover {
+    background-color: #37c862; /* Tonalidade mais escura para hover */
+}
+
+.btn-cancel, .btn-delete {
+    background-color: var(--color-cancel-delete); /* Exclusão/Encerramento [cite: 16] */
+    color: var(--color-text-light);
+}
+
+.btn-cancel:hover, .btn-delete:hover {
+    background-color: #d83d3d; /* Tonalidade mais escura para hover */
+}
+
+.btn-neutral {
+    background-color: var(--color-primary-light);
+}
+
+.btn-neutral:hover {
+    background-color: #71b8e6;
+}
+
+/* Estilo para o Menu */
+#main-menu button {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    background-color: var(--color-primary-medium);
+    color: var(--color-text-light);
+}
+
+#main-menu button:hover {
+    background-color: #359ed1;
+}
+
+/* Mensagens de Erro/Obrigatoriedade (RNF005)  */
+.error-message {
+    color: var(--color-cancel-delete);
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Estilo para a Lista de Equipamentos */
+.equipment-item {
+    padding: 10px;
+    border: 1px solid var(--color-primary-light);
+    border-radius: 4px;
+    margin-bottom: 8px;
+    background-color: var(--color-primary-extra-light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.equipment-item h4 {
+    margin: 0;
+    color: var(--color-primary-medium);
+}
