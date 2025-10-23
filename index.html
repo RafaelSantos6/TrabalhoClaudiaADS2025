@@ -1,0 +1,124 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Gerenciador de Equipamentos TI</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Sistema Gerenciador de Equipamentos TI</h1>
+        <div class="header-right">
+            <img id="profile-avatar" src="" alt="Avatar" title="Clique para alterar foto" style="display:none">
+            <input type="file" id="avatar-input" accept="image/*" style="display:none">
+        </div>
+    </header>
+
+    <main id="app-container">
+        <section id="login-screen" class="screen active">
+            <h2>Login</h2>
+            <form id="login-form">
+                <label for="username">Usuário:</label>
+                <input type="text" id="username" required>
+                <label for="password">Senha:</label>
+                <input type="password" id="password" required>
+                <button type="submit" class="btn-confirm">Logar</button>
+                <p id="login-error" class="error-message"></p>
+            </form>
+        </section>
+
+        <section id="menu-screen" class="screen">
+            <h2>Menu de Operações</h2>
+            <nav id="main-menu">
+                <button onclick="navigate('manage-users-screen')" class="menu-item admin-only">Manter Usuários</button>
+                <button onclick="navigate('manage-equipment-screen')" class="menu-item">Manter Equipamentos</button>
+                <button onclick="navigate('report-screen')" class="menu-item">Gerar Relatório </button>
+                <button onclick="navigate('check-status-screen')" class="menu-item">Verificar Status</button>
+                <button onclick="logout()" class="menu-item btn-cancel">Sair</button>
+            </nav>
+        </section>
+
+        <section id="manage-users-screen" class="screen">
+            <h2>Manter Usuários</h2>
+            <button onclick="navigate('menu-screen')" class="btn-neutral">Voltar ao Menu</button>
+            <p>Funcionalidade de Manter Usuários simulada.</p>
+            <div id="user-list"></div>
+            <button onclick="showUserForm()" class="btn-confirm">Criar Novo Usuário</button>
+            <div id="user-form-container" style="display: none;">
+                <h3>Cadastro de Usuário</h3>
+                <form id="user-form">
+                    <label for="new-user-name">Usuário (Login):</label>
+                    <input type="text" id="new-user-name" required>
+                    <label for="new-user-password">Senha:</label>
+                    <input type="password" id="new-user-password" required>
+                    <label for="new-user-registration">Registro:</label>
+                    <input type="text" id="new-user-registration" required>
+                    <button type="submit" class="btn-confirm">Salvar</button>
+                    <button type="button" onclick="hideUserForm()" class="btn-cancel">Cancelar</button>
+                    <p id="user-error" class="error-message"></p>
+                </form>
+            </div>
+        </section>
+
+        <section id="manage-equipment-screen" class="screen">
+            <h2>Manter Equipamentos</h2>
+            <button onclick="navigate('menu-screen')" class="btn-neutral">Voltar ao Menu</button>
+            <div id="equipment-list"></div>
+            <button onclick="showEquipmentForm()" class="btn-confirm">Adicionar Equipamento</button>
+
+            <div id="equipment-form-container" style="display: none;">
+                <h3>Cadastro/Edição de Equipamento</h3>
+                <form id="equipment-form">
+                    <input type="hidden" id="eq-id">
+                    <label for="eq-model">Modelo: (Obrigatório)</label>
+                    <input type="text" id="eq-model" required>
+                    <label for="eq-manufacturer">Fabricante: (Obrigatório)</label>
+                    <input type="text" id="eq-manufacturer" required>
+                    <label for="eq-type">Tipo: (Obrigatório)</label>
+                    <input type="text" id="eq-type" required>
+                    <label for="eq-name">Nome: (Obrigatório)</label>
+                    <input type="text" id="eq-name" required>
+                    <label for="eq-tags">Tags (Separadas por vírgula): (Obrigatório)</label>
+                    <input type="text" id="eq-tags" required>
+                    <label for="eq-status">Status: (Obrigatório)</label>
+                    <select id="eq-status" required>
+                        <option value="Em Operação">Em Operação</option>
+                        <option value="Em Manutenção">Em Manutenção</option>
+                        <option value="Desativado">Desativado</option>
+                    </select>
+
+                    <button type="submit" class="btn-confirm">Salvar</button>
+                    <button type="button" onclick="hideEquipmentForm()" class="btn-cancel">Cancelar</button>
+                    <p id="equipment-error" class="error-message"></p>
+                </form>
+            </div>
+        </section>
+
+        <section id="report-screen" class="screen">
+            <h2>Gerar Relatório</h2>
+            <button onclick="navigate('menu-screen')" class="btn-neutral">Voltar ao Menu</button>
+            <button onclick="generateReport()" class="btn-confirm">Gerar Relatório</button>
+            <div id="report-output">
+                </div>
+        </section>
+
+        <section id="check-status-screen" class="screen">
+            <h2>Verificar Status de Equipamento</h2>
+            <button onclick="navigate('menu-screen')" class="btn-neutral">Voltar ao Menu</button>
+            <form id="check-status-form">
+                <label for="status-tag">Tag do Equipamento:</label>
+                <input type="text" id="status-tag" required>
+                <button type="submit" class="btn-confirm">Verificar</button>
+                <p id="status-error" class="error-message"></p>
+            </form>
+            <div id="status-output"></div>
+        </section>
+
+    </main>
+
+    <script src="assets/js/script.js"></script>
+</body>
+</html>

@@ -1,3 +1,4 @@
+
 // Simulação de Banco de Dados/Armazenamento de Dados no cliente
 // Usuários (RF001) - Simulações de Administrador e Usuário Comum
 let users = [
