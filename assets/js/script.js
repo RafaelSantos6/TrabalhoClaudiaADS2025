@@ -20,6 +20,14 @@ const DEFAULT_AVATAR_DATAURL = 'data:image/svg+xml;utf8,' + encodeURIComponent(
     `<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1"><rect width="24" height="24" rx="4" fill="#40B7FF"/><circle cx="12" cy="9" r="3.2" fill="white"/><path d="M4 20c1.5-4 6-6 8-6s6.5 2 8 6" fill="white" opacity="0.9"/></svg>`
 );
 
+// Aplica classe no <body> conforme role: 'admin' ou 'user'. Passar null remove classes.
+function setRoleClass(role) {
+    const body = document.body;
+    body.classList.remove('role-admin', 'role-user');
+    if (role === 'admin') body.classList.add('role-admin');
+    else if (role === 'user') body.classList.add('role-user');
+}
+
 /**
  * Funções de Navegação e Controle de Tela
  * O usuário deve estar logado para realizar qualquer operação (RF006)
@@ -82,6 +90,8 @@ document.getElementById('login-form').addEventListener('submit', function(e) {
         });
     // Exibir avatar do usuário, se houver
     loadAndShowAvatar(user.username);
+        // Aplicar classe de role no body para estilos específicos
+        setRoleClass(user.role);
     } else {
         // Usuário ou senha incorretos (Fluxo Alternativo 3a - Login)
         errorDisplay.textContent = 'Credenciais inválidas. Tente novamente.';
@@ -94,6 +104,8 @@ function logout() {
     hideAvatar();
     navigate('login-screen');
     alert('Sessão encerrada.');
+        // Remover classes de role
+        setRoleClass(null);
 }
 
 /**
@@ -403,3 +415,4 @@ avatarInput && avatarInput.addEventListener('change', (e) => {
     };
     reader.readAsDataURL(file);
 });
+

@@ -33,6 +33,27 @@ header {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+
+/* Header variations by role */
+body.role-admin header {
+    background-color: #FF6F61; /* coral/red for admin */
+    color: white;
+}
+
+body.role-user header {
+    background-color: var(--color-primary-medium); /* default blue for users */
+    color: var(--color-text-light);
+}
+
+/* Avatar accent by role */
+body.role-admin #profile-avatar {
+    box-shadow: 0 0 0 3px rgba(255,111,97,0.12);
+}
+
+body.role-user #profile-avatar {
+    box-shadow: 0 0 0 3px rgba(64,183,255,0.12);
+}
+
 /* Header right: avatar */
 .header-right {
     position: absolute;
